@@ -1,13 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { HelmetProvider } from "react-helmet-async";
+import { StoreProvider } from "./Store";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import ReactDOM from "react-dom/client";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import "./css/font-awesome.min.css";
+import "./css/bootstrap.min.css";
+import "./css/shoes.css";
+import "./css/responsive.css";
+
+import "./css/magnific-popup.css";
+
+import "./css/animate.css";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <StoreProvider>
+      <HelmetProvider>
+        <PayPalScriptProvider deferLoading={true}>
+          <App />
+        </PayPalScriptProvider>
+      </HelmetProvider>
+    </StoreProvider>
   </React.StrictMode>
 );
 
